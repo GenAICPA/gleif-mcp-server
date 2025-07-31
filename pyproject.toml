@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gleif-mcp-server"
+version = "0.1.0"
+description = "Model Context Protocol (MCP) server for the GLEIF (Global Legal Entity Identifier Foundation) REST API"
+authors = [
+    { name = "GenAICPA", email = "contact@genacpa.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+keywords = ["mcp", "gleif", "lei", "legal-entity-identifier", "api", "server"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",

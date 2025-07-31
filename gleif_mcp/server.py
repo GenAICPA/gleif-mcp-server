@@ -38,24 +38,9 @@ Each tool returns the raw JSON payload from the GLEIF API or a JSON structure
 of the form {"error": "…"} when a problem occurs.
 """
 
-GLEIF_API_BASE_URL = "https://api.gleif.org/api/v1"
 
-# ---------------------------------------------------------------------------
-# Helper – unified GET wrapper
-# ---------------------------------------------------------------------------
 
-def _request(endpoint: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-    """Perform a GET request against the GLEIF API and return JSON (or error)."""
-    url = f"{GLEIF_API_BASE_URL}{endpoint}"
-    try:
-        with httpx.Client(timeout=30) as client:
-            response = client.get(url, params=params or {})
-            response.raise_for_status()
-            return response.json()
-    except httpx.HTTPStatusError as exc:
-        return {"error": f"HTTP {exc.response.status_code}: {exc.response.text}"}
-    except httpx.RequestError as exc:
-        return {"error": f"Request error: {exc!s}"}
+from ._gleif_client import _request
 
 
 # ---------------------------------------------------------------------------
